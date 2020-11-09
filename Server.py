@@ -9,96 +9,82 @@ mpl.use('Agg')
 
 app = Flask(__name__)
 
-conn = psycopg2.connect(database='hackathon', user='postgres', password='gennadi0', host='127.0.0.1', port=5432)
-cur = conn.cursor()
+database = psycopg2.connect(database='Server', user='postgres', password=' ', host='127.0.0.1', port=5432)
+database_cursor = database.cursor()
 
 
 @app.route("/update", methods=['POST'])
 def update():
-    dict = {}
     print(request.get_json())
-    name = request.get_json()
-    cur.execute("INSERT INTO workers (id, name, surname) VALUES (%s, %s, %s)", (name.get('id'), (name.get('name')),
-                                                                                name.get('surname')))
-    conn.commit()
-    dict.update([('name', name.get('name'))])  # Надо бы в бд занести
-    dict.update([('surname', name.get('surname'))])
-    dict.update([('coordinates', name.get('coordinates'))])
-    return jsonify(dict)
+    data = request.get_json()
+    database_cursor.execute("INSERT INTO workers (id, name, surname) VALUES (%s, %s, %s)", (data.get('id'),
+                                                                                            (data.get('name')),
+                                                                                            data.get('surname')))
+    database.commit()
+    return_answer = {'answer': 'success'}
+    return jsonify(return_answer)
 
 
 @app.route("/all_workers", methods=['GET'])
 def all_workers():
-    out = []
-    dict = {}
-    cur.execute("SELECT* FROM workers")
-    for row in cur:
-        out.append(list(row))
-    for i in range(len(out)):
-        out_dict = {'name': out[i][1],
-                    'surname': out[i][2]}
-        dict.update([(out[i][0], out_dict)])
-    return jsonify(dict)
+    return_answer = {}
+    database_cursor.execute("SELECT* FROM workers")
+    for database_row in database_cursor:
+        row = list(database_row)
+        return_answer.update([(row[0], {'name': row[1], 'surname': row[2]})])
+    return jsonify(return_answer)
 
 
 @app.route("/find_worker/<login>", methods=['GET'])
 def find_worker_id(login):
-    out = []
-    dict = {}
-    cur.execute("SELECT* FROM workers WHERE login = %(login)s", {'login': login})
-    for row in cur:
-        out.append(list(row))
-    for i in range(len(out)):
-        out_dict = {'name': out[i][1],
-                    'surname': out[i][2]}
-        dict.update([(out[i][0], out_dict)])
-    return jsonify(dict)
+    return_answer = {}
+    database_cursor.execute("SELECT* FROM workers WHERE login = %(login)s", {'login': login})
+    for database_row in database_cursor:
+        row = list(database_row)
+        return_answer.update([(row[0], {'name': row[1], 'surname': row[2]})])
+    return jsonify(return_answer)
 
 
 @app.route("/find_worker", methods=['POST'])
 def find_worker_surname():
     surname = request.get_json()
-    out = []
-    dict = {}
-    cur.execute("SELECT name, surname, lastname FROM workers WHERE surname "
-                "= %(surname)s", {'surname': surname.get('surname')})
-    for row in cur:
-        out.append(list(row))
-    for i in range(len(out)):
-        out_dict = {'name': out[i][1],
-                    'surname': out[i][2],
-                    'lastname': out[i][3]}
-        dict.update([(out[i][0], out_dict)])
-    return jsonify(dict)
+    return_answer = {}
+    database_cursor.execute("SELECT name, surname, lastname FROM workers WHERE surname "
+                            "= %(surname)s", {'surname': surname.get('surname')})
+    for database_row in database_cursor:
+        row = list(database_row)
+        return_answer.update([(row[0], {'name': row[1], 'surname': row[2], 'lastname': row[3]})])
+    return jsonify(return_answer)
 
 
 @app.route("/location", methods=['POST'])
 def location():
-    out = []
-    dict = {}
-    data = request.get_json()
-    cur.execute("select* from workers inner join object_coordinates on object_coordinates.id_construction_object = "
-                "workers.id_construction_object inner join shift on shift.login_worker = workers.login")
-    for row in cur:
-        out.append(list(row))
+    return_answer = {}
     shift_id = ''
-    for i in range(len(out)):
-        if str(out[i][0]).strip() == data.get('login') and str(out[i][14]).strip() == 'окончена':
-            dict.update([('values_latitude', out[i][10]),
-                         ('values_longitude', out[i][12])])
-            print(dict)
-            return jsonify(dict)
-        if str(out[i][0]).strip() == data.get('login') and str(out[i][14]).strip() == 'в процессе':
-            shift_id = str(out[i][13]).strip()
-            dict.update([('values_latitude', out[i][10]),
-                         ('values_longitude', out[i][12])])
-    cur.execute("select* from workers_coordinates where id_shift = %(id)s", {'id': shift_id})
+    data = request.get_json()
+    database_cursor.execute(
+        "select* from workers inner join object_coordinates on object_coordinates.id_construction_object = "
+        "workers.id_construction_object inner join shift on shift.login_worker = workers.login")
+    for database_row in database_cursor:
+        row = list(database_row)
+        login = str(row[0]).strip()
+        shift_status = str(row[14]).strip()
+        latitude = row[10]
+        longitude = row[12]
+        if login == data.get('login') and shift_status == 'окончена':
+            return_answer.update([('values_latitude', latitude), ('values_longitude', longitude)])
+            return jsonify(return_answer)
+        elif login == 'login' and shift_status == 'в процессе':
+            shift_id = str(row[13]).strip()
+            return_answer.update([('values_latitude', latitude), ('values_longitude', longitude)])
     print(shift_id)
-    print(dict)
-    for row in cur:
-        dict.update([('coordinates_latitude', row[1][len(row[1]) - 1]),
-                     ('coordinates_longitude', row[3][len(row[3]) - 1])])
-        return jsonify(dict)
+    print(return_answer)
+
+    database_cursor.execute("select* from workers_coordinates where id_shift = %(id)s", {'id': shift_id})
+    for row in database_cursor:
+        return_answer.update([('coordinates_latitude', row[1][len(row[1]) - 1]),
+                              ('coordinates_longitude', row[3][len(row[3]) - 1])])
+    return jsonify(return_answer)
 
 
 if __name__ == "__main__":
