@@ -6,30 +6,14 @@
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
     </expand>
-    <select>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:origin/production" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </select>
+    <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d8e9eec-9017-44b4-b3d9-91320cdd5ba0" name="Default Changelist" comment="Edited update, all_workers, find_workers, find_worker and location requests.">
-      <change afterPath="$PROJECT_DIR$/Test_file.py" afterDir="false" />
+    <list default="true" id="7d8e9eec-9017-44b4-b3d9-91320cdd5ba0" name="Default Changelist" comment="find_worker_surname_android&#10;all_workers_on_construction_object_without_status&#10;all_workers_on_construction_object&#10;shift_start&#10;shift_start_android">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test_file.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,16 +36,13 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1k3Y8Qb0jXpmojvUF1qU7MuIowb" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager" selected="Python.Test_file">
@@ -123,21 +104,28 @@
       <option name="presentableId" value="Default" />
       <updated>1604930582012</updated>
     </task>
-    <task id="LOCAL-00001" summary="Sorted out troubles with interpreter">
-      <created>1604931181687</created>
+    <task id="LOCAL-00001" summary="update&#10;all_workers&#10;find_worker_id&#10;find_worker_surname&#10;location">
+      <created>1604932056216</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1604931181687</updated>
+      <updated>1604932056216</updated>
     </task>
-    <task id="LOCAL-00002" summary="Edited update, all_workers, find_workers, find_worker and location requests.">
-      <created>1604948116721</created>
+    <task id="LOCAL-00002" summary="find_worker_surname_android&#10;all_workers_on_construction_object_without_status&#10;all_workers_on_construction_object&#10;shift_start&#10;shift_start_android">
+      <created>1605018290081</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1604948116721</updated>
+      <updated>1605018290081</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="find_worker_surname_android&#10;all_workers_on_construction_object_without_status&#10;all_workers_on_construction_object&#10;shift_start&#10;shift_start_android">
+      <created>1605019190466</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1605019190466</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -145,19 +133,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="origin/production" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -165,59 +141,46 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Sorted out troubles with interpreter" />
-    <MESSAGE value="Edited update, all_workers, find_workers, find_worker and location requests." />
-    <option name="LAST_COMMIT_MESSAGE" value="Edited update, all_workers, find_workers, find_worker and location requests." />
+    <MESSAGE value="update&#10;all_workers&#10;find_worker_id&#10;find_worker_surname&#10;location" />
+    <MESSAGE value="find_worker_surname_android&#10;all_workers_on_construction_object_without_status&#10;all_workers_on_construction_object&#10;shift_start&#10;shift_start_android" />
+    <option name="LAST_COMMIT_MESSAGE" value="find_worker_surname_android&#10;all_workers_on_construction_object_without_status&#10;all_workers_on_construction_object&#10;shift_start&#10;shift_start_android" />
   </component>
   <component name="WindowStateProjectService">
     <state x="627" y="286" key="FileChooserDialogImpl" timestamp="1604930880684">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="627" y="286" key="FileChooserDialogImpl/0.0.1680.1050@0.0.1680.1050" timestamp="1604930880684" />
-    <state width="1659" height="281" key="GridCell.Tab.0.bottom" timestamp="1605023657416">
-      <screen x="0" y="23" width="1680" height="977" />
+    <state width="1899" height="344" key="GridCell.Tab.0.bottom" timestamp="1605024783697">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="829" height="295" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1604948162953" />
-    <state width="1659" height="281" key="GridCell.Tab.0.bottom/0.23.1680.977@0.23.1680.977" timestamp="1605023657416" />
-    <state width="1659" height="281" key="GridCell.Tab.0.center" timestamp="1605023657416">
-      <screen x="0" y="23" width="1680" height="977" />
+    <state width="1899" height="344" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605024783697" />
+    <state width="1899" height="344" key="GridCell.Tab.0.center" timestamp="1605024783696">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="829" height="295" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1604948162952" />
-    <state width="1659" height="281" key="GridCell.Tab.0.center/0.23.1680.977@0.23.1680.977" timestamp="1605023657416" />
-    <state width="1659" height="281" key="GridCell.Tab.0.left" timestamp="1605023657415">
-      <screen x="0" y="23" width="1680" height="977" />
+    <state width="1899" height="344" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605024783696" />
+    <state width="1899" height="344" key="GridCell.Tab.0.left" timestamp="1605024783696">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="829" height="295" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1604948162951" />
-    <state width="1659" height="281" key="GridCell.Tab.0.left/0.23.1680.977@0.23.1680.977" timestamp="1605023657415" />
-    <state width="1659" height="281" key="GridCell.Tab.0.right" timestamp="1605023657416">
-      <screen x="0" y="23" width="1680" height="977" />
+    <state width="1899" height="344" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605024783696" />
+    <state width="1899" height="344" key="GridCell.Tab.0.right" timestamp="1605024783697">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="829" height="295" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1604948162953" />
-    <state width="1659" height="281" key="GridCell.Tab.0.right/0.23.1680.977@0.23.1680.977" timestamp="1605023657416" />
-    <state x="168" y="110" key="MergeDialog" timestamp="1605019917491">
-      <screen x="0" y="23" width="1680" height="977" />
+    <state width="1899" height="344" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605024783697" />
+    <state x="184" y="86" key="MergeDialog" timestamp="1605024253513">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="168" y="110" key="MergeDialog/0.23.1680.977@0.23.1680.977" timestamp="1605019917491" />
-    <state x="478" y="280" key="MultipleFileMergeDialog" timestamp="1605019917564">
-      <screen x="0" y="23" width="1680" height="977" />
-    </state>
-    <state x="478" y="280" key="MultipleFileMergeDialog/0.23.1680.977@0.23.1680.977" timestamp="1605019917564" />
+    <state x="184" y="86" key="MergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605024253513" />
     <state x="341" y="164" key="SettingsEditor" timestamp="1604930980405">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="341" y="164" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1604930980405" />
-    <state x="615" y="180" key="VCS.ChangeListViewerDialog" timestamp="1605019173407">
-      <screen x="0" y="23" width="1680" height="977" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605019195118">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="615" y="180" key="VCS.ChangeListViewerDialog/0.23.1680.977@0.23.1680.977" timestamp="1605019173407" />
-    <state x="674" y="252" key="VcsDiffUtil.ChangesDialog" timestamp="1605019279307">
-      <screen x="0" y="23" width="1680" height="977" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1605019195118" />
+    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605024196169">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="674" y="252" key="VcsDiffUtil.ChangesDialog/0.23.1680.977@0.23.1680.977" timestamp="1605019279307" />
-    <state x="638" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605019887649">
-      <screen x="0" y="23" width="1680" height="977" />
-    </state>
-    <state x="638" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.977@0.23.1680.977" timestamp="1605019887649" />
+    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1605024196169" />
   </component>
 </project>
