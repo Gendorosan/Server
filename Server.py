@@ -147,49 +147,243 @@ def all_workers_on_construction_object(construction_object_id):
 @app.route("/shift_start", methods=['POST'])
 def shift_start():
     now = datetime.datetime.now()
-    login = request.get_json()
+    data = request.get_json()
     database_cursor.execute("select id from shift where id = (select max(id) from shift)")
-    id_shift = 0
-    for _ in database_cursor:
-        id_shift += 1
-    print(id_shift)
+    new_shift_id = 0
+    for database_row in database_cursor:
+        row = list(database_row)
+        new_shift_id = int(row[0])
+    print(new_shift_id)
     database_cursor.execute("insert into shift values(%(k)s, 'в процессе', %(login)s, %(date)s)",
-                            {'login': login.get('login'), 'k': id_shift, 'date': str(now).split()[0]})
+                            {'login': data.get('login'), 'k': new_shift_id + 1, 'date': str(now).split()[0]})
+
     database.commit()
-    database_cursor.execute("select* from workers_coordinates")
-    k = 0
-    for _ in database_cursor:
-        k += 1
-    print(k)
+    database_cursor.execute("select id from workers_coordinates where id = (select max(id) from workers_coordinates)")
+    new_workers_coordinates_id = 0
+    for database_row in database_cursor:
+        row = list(database_row)
+        new_workers_coordinates_id = int(row[0])
+    print(new_workers_coordinates_id)
     database_cursor.execute('insert into workers_coordinates values(%(id)s, %(first)s, %(id_shift)s)',
-                            {'id': k, 'first': None, 'id_shift': id_shift})
+                            {'id': new_workers_coordinates_id + 1, 'first': None, 'id_shift': new_shift_id + 1})
     database.commit()
-    dict = {'answer': 'success'}
-    return jsonify(dict)
+    return_answer = {'answer': 'success'}
+    return jsonify(return_answer)
 
 
 @app.route("/shift_start_android", methods=['GET'])
 def shift_start_android():
     now = datetime.datetime.now()
-    login = request.args
-    database_cursor.execute("select id from shift")
-    id_shift = 0
-    for row in database_cursor:
-        id_shift += 1
-    print(id_shift)
+    data = request.args
+    database_cursor.execute("select id from shift where id = (select max(id) from shift)")
+    new_shift_id = 0
+    for database_row in database_cursor:
+        row = list(database_row)
+        new_shift_id = int(row[0])
+    print(new_shift_id)
     database_cursor.execute("insert into shift values(%(k)s, 'в процессе', %(login)s, %(date)s)",
-                            {'login': login.get('login'), 'k': id_shift, 'date': str(now).split()[0]})
+                            {'login': data.get('login'), 'k': new_shift_id + 1, 'date': str(now).split()[0]})
+
     database.commit()
-    database_cursor.execute("select* from workers_coordinates")
-    k = 0
-    for row in database_cursor:
-        k += 1
-    print(k)
+    database_cursor.execute("select id from workers_coordinates where id = (select max(id) from workers_coordinates)")
+    new_workers_coordinates_id = 0
+    for database_row in database_cursor:
+        row = list(database_row)
+        new_workers_coordinates_id = int(row[0])
+    print(new_workers_coordinates_id)
     database_cursor.execute('insert into workers_coordinates values(%(id)s, %(first)s, %(id_shift)s)',
-                            {'id': k, 'first': None, 'id_shift': id_shift})
+                            {'id': new_workers_coordinates_id + 1, 'first': None, 'id_shift': new_shift_id + 1})
     database.commit()
-    dict = {'answer': 'success'}
-    return jsonify(dict)
+    return_answer = {'answer': 'success'}
+    return jsonify(return_answer)
+
+
+@app.route("/shift_stop", methods=['POST'])
+def shift_stop():
+    data = request.get_json()
+    database_cursor.execute("update shift set status = 'окончена' where login_worker = %(login)s",
+                            {'login': data.get('login')})
+    database.commit()
+    return_answer = {'answer': 'success'}
+    return jsonify(return_answer)
+
+
+@app.route("/shift_stop_android", methods=['GET'])
+def shift_stop_android():
+    data = request.args
+    database_cursor.execute("update shift set status = 'окончена' where login_worker = %(login)s",
+                            {'login': data.get('login')})
+    database.commit()
+    return_answer = {'answer': 'success'}
+    return jsonify(return_answer)
+
+
+@app.route("/drop_down_list", methods=['GET'])
+def drop_down_list():
+    database_cursor.execute("select* from position")
+    position = []
+    for row in database_cursor:
+        position.append({})
+        i = len(position) - 1
+        position[i].update([('id', row[0])])
+        position[i].update([('position', str(row[1]).strip())])
+        print(row[1])
+
+    database_cursor.execute("select id, name from company")
+    company = []
+    for row in database_cursor:
+        company.append({})
+        i = len(company) - 1
+        company[i].update([('id', row[0]), ('company', str(row[1]).strip())])
+    return_answer = {}
+    return_answer.update([('companies', company), ('positions', position)])
+    return jsonify(return_answer)
+
+
+@app.route("/add_coordinates", methods=['POST'])
+def add_coordinates():
+    data = request.get_json()
+    database_cursor.execute("select id from shift where login_worker = %(login)s and status = 'в процессе'",
+                            {'login': data.get('login')})
+    shift_id = 0
+    for row in database_cursor:
+        shift_id = row[0]
+        print(shift_id)
+    database_cursor.execute("select coordinates_latitude from workers_coordinates where id_shift = %(id)s",
+                            {'id': shift_id})
+    i = 0
+    for row in database_cursor:
+        i = 0 if row[0] is None else len(row[0])
+    print(i)
+    print(data.get('coordinates_longitude'))
+    print(data.get('coordinates_latitude'))
+    database_cursor.execute(
+        "update workers_coordinates set coordinates_latitude[%(i)s] = %(coordinates_latitude)s where id_shift "
+        "= %(id)s",
+        {'id': shift_id, 'i': i, 'coordinates_latitude': data.get('coordinates_latitude')})
+    database.commit()
+    database_cursor.execute(
+        "update workers_coordinates set coordinates_longitude[%(i)s] = %(coordinates_longitude)s where id_shift = %("
+        "id)s",
+        {'id': shift_id, 'i': i, 'coordinates_longitude': data.get('coordinates_longitude')})
+    database.commit()
+    return_answer = {'answer': 'success'}
+    return jsonify(return_answer)
+
+
+@app.route("/add_coordinates_android", methods=['GET'])
+def add_coordinates_android():
+    data = request.args
+    database_cursor.execute("select id from shift where login_worker = %(login)s and status = 'в процессе'",
+                            {'login': data.get('login')})
+    shift_id = 0
+    for row in database_cursor:
+        shift_id = row[0]
+        print(shift_id)
+    database_cursor.execute("select coordinates_latitude from workers_coordinates where id_shift = %(id)s",
+                            {'id': shift_id})
+    i = 0
+    for row in database_cursor:
+        i = 0 if row[0] is None else len(row[0])
+    print(i)
+    print(data.get('coordinates_longitude'))
+    print(data.get('coordinates_latitude'))
+    database_cursor.execute(
+        "update workers_coordinates set coordinates_latitude[%(i)s] = %(coordinates_latitude)s where id_shift "
+        "= %(id)s",
+        {'id': shift_id, 'i': i, 'coordinates_latitude': data.get('coordinates_latitude')})
+    database.commit()
+    database_cursor.execute(
+        "update workers_coordinates set coordinates_longitude[%(i)s] = %(coordinates_longitude)s where id_shift = %("
+        "id)s",
+        {'id': shift_id, 'i': i, 'coordinates_longitude': data.get('coordinates_longitude')})
+    database.commit()
+    return_answer = {'answer': 'success'}
+    return jsonify(return_answer)
+
+
+@app.route("/add_coordinates/coordinates_latitude", methods=['GET'])
+def add_coordinates_arduino(device_number):
+    data = request.args
+    database_cursor.execute("select id from shift where device_number = %(device_number)s and status = 'в процессе'",
+                            {'device_number': device_number})
+    shift_id = 0
+    for row in database_cursor:
+        shift_id = row[0]
+        print(shift_id)
+    database_cursor.execute("select coordinates_latitude from workers_coordinates where id_shift = %(id)s",
+                            {'id': shift_id})
+    i = 0
+    for row in database_cursor:
+        i = 0 if row[0] is None else len(row[0])
+    print(i)
+    print(data.get('coordinates_longitude'))
+    print(data.get('coordinates_latitude'))
+    database_cursor.execute(
+        "update workers_coordinates set coordinates_latitude[%(i)s] = %(coordinates_latitude)s where id_shift "
+        "= %(id)s",
+        {'id': shift_id, 'i': i, 'coordinates_latitude': data.get('coordinates_latitude')})
+    database.commit()
+    database_cursor.execute(
+        "update workers_coordinates set coordinates_longitude[%(i)s] = %(coordinates_longitude)s where id_shift = %("
+        "id)s",
+        {'id': shift_id, 'i': i, 'coordinates_longitude': data.get('coordinates_longitude')})
+    database.commit()
+    return_answer = {'answer': 'success'}
+    return jsonify(return_answer)
+
+
+@app.route("/company_registration", methods=['POST'])
+def company_registration():
+    try:
+        print(request.get_json())
+        name = request.get_json()
+        database_cursor.execute('select id from company where id = (select max(id) from company)')
+        company_id = 0
+        for database_row in database_cursor:
+            row = list(database_row)
+            company_id += int(row[0])
+        print(company_id)
+        database_cursor.execute(
+            "insert into company values(%(id)s, %(name)s, %(ogrn)s, %(inn)s, %(login)s, %(password)s)",
+            {'id': company_id,
+             'name': name.get('name'),
+             'ogrn': name.get('ogrn'),
+             'inn': name.get('inn'),
+             'login': name.get('login'),
+             'password': name.get('password')})
+        database.commit()
+        return_answer = {'answer': 'success'}
+        return jsonify(return_answer)
+    except:
+        return_answer = {'answer': 'fail'}
+        return jsonify(return_answer)
+
+
+@app.route("/company_registration_android", methods=['GET'])
+def company_registration_android():
+    try:
+        name = request.args
+        database_cursor.execute('select id from company where id = (select max(id) from company)')
+        company_id = 0
+        for database_row in database_cursor:
+            row = list(database_row)
+            company_id += int(row[0])
+        print(company_id)
+        database_cursor.execute(
+            "insert into company values(%(id)s, %(name)s, %(ogrn)s, %(inn)s, %(login)s, %(password)s)",
+            {'id': company_id,
+             'name': name.get('name'),
+             'ogrn': name.get('ogrn'),
+             'inn': name.get('inn'),
+             'login': name.get('login'),
+             'password': name.get('password')})
+        database.commit()
+        return_answer = {'answer': 'success'}
+        return jsonify(return_answer)
+    except:
+        return_answer = {'answer': 'fail'}
+        return jsonify(return_answer)
 
 
 if __name__ == "__main__":
