@@ -1,32 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
-    <select>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:origin/production" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </select>
+    <expand />
+    <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d8e9eec-9017-44b4-b3d9-91320cdd5ba0" name="Default Changelist" comment="Edited update, all_workers, find_workers, find_worker and location requests.">
+    <list default="true" id="7d8e9eec-9017-44b4-b3d9-91320cdd5ba0" name="Default Changelist" comment="Commit before merging">
       <change afterPath="$PROJECT_DIR$/Test_file.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server.py" afterDir="false" />
@@ -137,7 +116,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604948116721</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Edited find_worker_surname_android, all_workers_on_construction_object_without_status, all_workers_on_construction_object.&#10;Had troubles with shift_start and shift_start_android.">
+      <created>1605024138843</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1605024138846</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -168,33 +154,35 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Sorted out troubles with interpreter" />
     <MESSAGE value="Edited update, all_workers, find_workers, find_worker and location requests." />
-    <option name="LAST_COMMIT_MESSAGE" value="Edited update, all_workers, find_workers, find_worker and location requests." />
+    <MESSAGE value="Edited find_worker_surname_android, all_workers_on_construction_object_without_status, all_workers_on_construction_object.&#10;Had troubles with shift_start and shift_start_android." />
+    <MESSAGE value="Commit before merging" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit before merging" />
   </component>
   <component name="WindowStateProjectService">
     <state x="627" y="286" key="FileChooserDialogImpl" timestamp="1604930880684">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="627" y="286" key="FileChooserDialogImpl/0.0.1680.1050@0.0.1680.1050" timestamp="1604930880684" />
-    <state width="1659" height="281" key="GridCell.Tab.0.bottom" timestamp="1605023657416">
+    <state width="1659" height="523" key="GridCell.Tab.0.bottom" timestamp="1605026540917">
       <screen x="0" y="23" width="1680" height="977" />
     </state>
     <state width="829" height="295" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1604948162953" />
-    <state width="1659" height="281" key="GridCell.Tab.0.bottom/0.23.1680.977@0.23.1680.977" timestamp="1605023657416" />
-    <state width="1659" height="281" key="GridCell.Tab.0.center" timestamp="1605023657416">
+    <state width="1659" height="523" key="GridCell.Tab.0.bottom/0.23.1680.977@0.23.1680.977" timestamp="1605026540917" />
+    <state width="1659" height="523" key="GridCell.Tab.0.center" timestamp="1605026540917">
       <screen x="0" y="23" width="1680" height="977" />
     </state>
     <state width="829" height="295" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1604948162952" />
-    <state width="1659" height="281" key="GridCell.Tab.0.center/0.23.1680.977@0.23.1680.977" timestamp="1605023657416" />
-    <state width="1659" height="281" key="GridCell.Tab.0.left" timestamp="1605023657415">
+    <state width="1659" height="523" key="GridCell.Tab.0.center/0.23.1680.977@0.23.1680.977" timestamp="1605026540917" />
+    <state width="1659" height="523" key="GridCell.Tab.0.left" timestamp="1605026540916">
       <screen x="0" y="23" width="1680" height="977" />
     </state>
     <state width="829" height="295" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1604948162951" />
-    <state width="1659" height="281" key="GridCell.Tab.0.left/0.23.1680.977@0.23.1680.977" timestamp="1605023657415" />
-    <state width="1659" height="281" key="GridCell.Tab.0.right" timestamp="1605023657416">
+    <state width="1659" height="523" key="GridCell.Tab.0.left/0.23.1680.977@0.23.1680.977" timestamp="1605026540916" />
+    <state width="1659" height="523" key="GridCell.Tab.0.right" timestamp="1605026540917">
       <screen x="0" y="23" width="1680" height="977" />
     </state>
     <state width="829" height="295" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1604948162953" />
-    <state width="1659" height="281" key="GridCell.Tab.0.right/0.23.1680.977@0.23.1680.977" timestamp="1605023657416" />
+    <state width="1659" height="523" key="GridCell.Tab.0.right/0.23.1680.977@0.23.1680.977" timestamp="1605026540917" />
     <state x="168" y="110" key="MergeDialog" timestamp="1605019917491">
       <screen x="0" y="23" width="1680" height="977" />
     </state>
@@ -211,13 +199,17 @@
       <screen x="0" y="23" width="1680" height="977" />
     </state>
     <state x="615" y="180" key="VCS.ChangeListViewerDialog/0.23.1680.977@0.23.1680.977" timestamp="1605019173407" />
+    <state x="440" y="251" key="Vcs.Push.Dialog.v2" timestamp="1605024146193">
+      <screen x="0" y="23" width="1680" height="977" />
+    </state>
+    <state x="440" y="251" key="Vcs.Push.Dialog.v2/0.23.1680.977@0.23.1680.977" timestamp="1605024146193" />
     <state x="674" y="252" key="VcsDiffUtil.ChangesDialog" timestamp="1605019279307">
       <screen x="0" y="23" width="1680" height="977" />
     </state>
     <state x="674" y="252" key="VcsDiffUtil.ChangesDialog/0.23.1680.977@0.23.1680.977" timestamp="1605019279307" />
-    <state x="638" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605019887649">
+    <state x="638" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605026474510">
       <screen x="0" y="23" width="1680" height="977" />
     </state>
-    <state x="638" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.977@0.23.1680.977" timestamp="1605019887649" />
+    <state x="638" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1680.977@0.23.1680.977" timestamp="1605026474510" />
   </component>
 </project>
