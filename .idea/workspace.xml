@@ -10,7 +10,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d8e9eec-9017-44b4-b3d9-91320cdd5ba0" name="Default Changelist" comment="update&#10;all_workers&#10;find_worker_id&#10;find_worker_surname&#10;location">
+    <list default="true" id="7d8e9eec-9017-44b4-b3d9-91320cdd5ba0" name="Default Changelist" comment="find_worker_surname_android&#10;all_workers_on_construction_object_without_status&#10;all_workers_on_construction_object&#10;shift_start&#10;shift_start_android">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,6 +40,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager">
@@ -86,7 +87,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604932056216</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="find_worker_surname_android&#10;all_workers_on_construction_object_without_status&#10;all_workers_on_construction_object&#10;shift_start&#10;shift_start_android">
+      <created>1605018290081</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1605018290081</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -103,7 +111,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update&#10;all_workers&#10;find_worker_id&#10;find_worker_surname&#10;location" />
-    <option name="LAST_COMMIT_MESSAGE" value="update&#10;all_workers&#10;find_worker_id&#10;find_worker_surname&#10;location" />
+    <MESSAGE value="find_worker_surname_android&#10;all_workers_on_construction_object_without_status&#10;all_workers_on_construction_object&#10;shift_start&#10;shift_start_android" />
+    <option name="LAST_COMMIT_MESSAGE" value="find_worker_surname_android&#10;all_workers_on_construction_object_without_status&#10;all_workers_on_construction_object&#10;shift_start&#10;shift_start_android" />
   </component>
   <component name="WindowStateProjectService">
     <state x="627" y="286" key="FileChooserDialogImpl" timestamp="1604930880684">
@@ -134,10 +143,10 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="341" y="164" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1604930980405" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1604932060509">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605018300098">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1604932060509" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1605018300098" />
     <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604948146735">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
