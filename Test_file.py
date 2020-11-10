@@ -11,24 +11,26 @@ def shift_start():
     now = datetime.datetime.now()
     login = {'login': 'nya'}
     database_cursor.execute("select id from shift where id = (select max(id) from shift)")
-    id_shift = 0
-    for _ in database_cursor:
-        id_shift += 1
-    print(str(now).split()[0])
+    new_shift_id = 0
+    for database_row in database_cursor:
+        row = list(database_row)
+        new_shift_id = int(row[0])
+    print(new_shift_id)
     database_cursor.execute("insert into shift values(%(k)s, 'в процессе', %(login)s, %(date)s)",
-                            {'login': login.get('login'), 'k': id_shift, 'date': str(now).split()[0]})
+                            {'login': login.get('login'), 'k': new_shift_id + 1, 'date': str(now).split()[0]})
 
     database.commit()
-    database_cursor.execute("select* from workers_coordinates")
-    k = 0
-    for _ in database_cursor:
-        k += 1
-    print(k)
+    database_cursor.execute("select id from workers_coordinates where id = (select max(id) from workers_coordinates)")
+    new_workers_coordinates_id = 0
+    for database_row in database_cursor:
+        row = list(database_row)
+        new_workers_coordinates_id = int(row[0])
+    print(new_workers_coordinates_id)
     database_cursor.execute('insert into workers_coordinates values(%(id)s, %(first)s, %(id_shift)s)',
-                            {'id': k, 'first': None, 'id_shift': id_shift})
+                            {'id': new_workers_coordinates_id + 1, 'first': None, 'id_shift': new_shift_id + 1})
     database.commit()
-    dict = {'answer': 'success'}
-    print(dict)
+    return_answer = {'answer': 'success'}
+    print(return_answer)
 
 
 shift_start()
