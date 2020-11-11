@@ -390,55 +390,55 @@ def company_registration_android():
 def registration():
     try:
         print(request.get_json())
-        name = request.get_json()
-        database_cursor.execute('select id from position where name = %(position)s', {'position': name.get('position')})
-        k = 0
+        data = request.get_json()
+        database_cursor.execute('select id from position where name = %(position)s', {'position': data.get('position')})
+        position_id = 0
         for row in database_cursor:
-            k = row[0]
+            position_id = row[0]
         database_cursor.execute(
             "INSERT INTO workers (login, name, surname, lastname, password, phone_number, id_position, device_number) "
             "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
-            ((name.get('login')),
-             (name.get('name')),
-             (name.get('surname')),
-             (name.get('lastname')),
-             (name.get('password')),
-             (name.get('phone_number')),
-             (k),
-             (name.get('device_number'))))
+            ((data['login']),
+             (data.get('name')),
+             (data.get('surname')),
+             (data.get('lastname')),
+             (data.get('password')),
+             (data.get('phone_number')),
+             position_id,
+             (data.get('device_number'))))
         database.commit()
-        dict = {'answer': 'success'}
-        return jsonify(dict)
+        return_answer = {'answer': 'success'}
+        return jsonify(return_answer)
     except:
-        dict = {'answer': 'fail'}
-        return jsonify(dict)
+        return_answer = {'answer': 'fail'}
+        return jsonify(return_answer)
 
 
 @app.route("/registration_android", methods=['GET'])
 def registration_android():
     try:
-        name = request.args
-        database_cursor.execute('select id from position where name = %(position)s', {'position': name.get('position')})
-        k = 0
+        data = request.args
+        database_cursor.execute('select id from position where name = %(position)s', {'position': data.get('position')})
+        position_id = 0
         for row in database_cursor:
-            k = row[0]
+            position_id = row[0]
         database_cursor.execute(
             "INSERT INTO workers (login, name, surname, lastname, password, phone_number, id_position, device_number) "
             "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
-            ((name.get('login')),
-             (name.get('name')),
-             (name.get('surname')),
-             (name.get('lastname')),
-             (name.get('password')),
-             (name.get('phone_number')),
-             (k),
-             (name.get('device_number'))))
+            ((data['login']),
+             (data.get('name')),
+             (data.get('surname')),
+             (data.get('lastname')),
+             (data.get('password')),
+             (data.get('phone_number')),
+             position_id,
+             (data.get('device_number'))))
         database.commit()
-        dict = {'answer': 'success'}
-        return jsonify(dict)
+        return_answer = {'answer': 'success'}
+        return jsonify(return_answer)
     except:
-        dict = {'answer': 'fail'}
-        return jsonify(dict)
+        return_answer = {'answer': 'fail'}
+        return jsonify(return_answer)
 
 
 @app.route("/authentication", methods=['POST'])
@@ -450,25 +450,24 @@ def authentication():
                                 "%(password)s",
                                 {'login': data.get('login'),
                                  'password': data.get('password')})
-        out = []
+        user_info = []
         for row in database_cursor:
             print(row)
-            out.append(row)
+            user_info.append(row)
         database_cursor.execute('select status from shift where login_worker = %(login)s', {'login': data.get('login')})
         status = []
         for row in database_cursor:
             print(row)
             status.append(row)
-        if len(status) > 0:
-            dict = {'answer': 'success', 'name': str(out[0][0]).strip(), 'surname': str(out[0][1]).strip(),
-                    'lastname': str(out[0][2]).strip(), 'status': str(status[0]).strip()}
-        else:
-            dict = {'answer': 'success', 'name': str(out[0][0]).strip(), 'surname': str(out[0][1]).strip(),
-                    'lastname': str(out[0][2]).strip(), 'status': 'окончена'}
-        return jsonify(dict)
+
+        return_answer = {'answer': 'success', 'name': str(user_info[0][0]).strip(),
+                         'surname': str(user_info[0][1]).strip(),
+                         'lastname': str(user_info[0][2]).strip(),
+                         'status': str(status[-1]).strip() if len(status) > 0 else 'окончена'}
+        return jsonify(return_answer)
     except:
-        dict = {'answer': 'fail'}
-        return jsonify(dict)
+        return_answer = {'answer': 'fail'}
+        return jsonify(return_answer)
 
 
 @app.route("/authentication_android", methods=['GET'])
@@ -479,25 +478,24 @@ def authentication_android():
                                 "%(password)s",
                                 {'login': data.get('login'),
                                  'password': data.get('password')})
-        out = []
+        user_info = []
         for row in database_cursor:
             print(row)
-            out.append(row)
+            user_info.append(row)
         database_cursor.execute('select status from shift where login_worker = %(login)s', {'login': data.get('login')})
         status = []
         for row in database_cursor:
             print(row)
             status.append(row)
-        if len(status) > 0:
-            dict = {'answer': 'success', 'name': str(out[0][0]).strip(), 'surname': str(out[0][1]).strip(),
-                    'lastname': str(out[0][2]).strip(), 'status': str(status[0]).strip()}
-        else:
-            dict = {'answer': 'success', 'name': str(out[0][0]).strip(), 'surname': str(out[0][1]).strip(),
-                    'lastname': str(out[0][2]).strip(), 'status': 'окончена'}
-        return jsonify(dict)
+
+        return_answer = {'answer': 'success', 'name': str(user_info[0][0]).strip(),
+                         'surname': str(user_info[0][1]).strip(),
+                         'lastname': str(user_info[0][2]).strip(),
+                         'status': str(status[-1][0]).strip() if len(status) > 0 else 'окончена'}
+        return jsonify(return_answer)
     except:
-        dict = {'answer': 'fail'}
-        return jsonify(dict)
+        return_answer = {'answer': 'fail'}
+        return jsonify(return_answer)
 
 
 @app.route("/company_authentication", methods=['POST'])
@@ -508,14 +506,14 @@ def company_authentication():
         database_cursor.execute("select name from company where login = %(login)s and password = %(password)s",
                                 {'login': data.get('login'),
                                  'password': data.get('password')})
-        out = []
+        company_name = []
         for row in database_cursor:
-            out.append(row)
-        dict = {'answer': 'success', 'name': str(out[0][0]).strip()}
-        return jsonify(dict)
+            company_name.append(row)
+        return_answer = {'answer': 'success', 'name': str(company_name[0][0]).strip()}
+        return jsonify(return_answer)
     except:
-        dict = {'answer': 'fail'}
-        return jsonify(dict)
+        return_answer = {'answer': 'fail'}
+        return jsonify(return_answer)
 
 
 @app.route("/company_authentication_android", methods=['GET'])
@@ -525,44 +523,42 @@ def company_authentication_android():
         database_cursor.execute("select name from company where login = %(login)s and password = %(password)s",
                                 {'login': data.get('login'),
                                  'password': data.get('password')})
-        out = []
+        company_name = []
         for row in database_cursor:
-            out.append(row)
-        dict = {'answer': 'success', 'name': str(out[0][0]).strip()}
-        return jsonify(dict)
+            company_name.append(row)
+        return_answer = {'answer': 'success', 'name': str(company_name[0][0]).strip()}
+        return jsonify(return_answer)
     except:
-        dict = {'answer': 'fail'}
-        return jsonify(dict)
+        return_answer = {'answer': 'fail'}
+        return jsonify(return_answer)
 
 
 @app.route("/statistics_1/<id>", methods=['GET'])
-def statistics_1(id):
+def statistics_1(construction_object_id):
     plt.clf()
-    list_position = []
+    available_positions = []
     database_cursor.execute("select* from position")
-    for row in database_cursor:
-        for i in range(len(row)):
-            if i / 2 != 0:
-                list_position.append(str(row[i]).strip())
-    print(list_position)
-    database_cursor.execute('select* from workers where id_construction_object = %(id)s', {'id': int(id)})
+    for database_row in database_cursor:
+        row = list(database_row)
+        available_positions.append(str(row[1]).strip())
+    print(available_positions)
+
+    database_cursor.execute('select id_position from workers where id_construction_object = %(id)s',
+                            {'id': int(construction_object_id)})
     workers = []
     for row in database_cursor:
-        print(row[4])
-        workers.append(row[4])
+        print(row[0])
+        workers.append(available_positions[row[0]])
     print(workers)
-    for i in range(len(workers)):
-        workers[i] = list_position[workers[i]]
-    print(workers)
-    positions = {}
+    amount_of_workers_on_positions = {}
     for position in set(workers):
-        positions[position] = workers.count(position)
+        amount_of_workers_on_positions[position] = workers.count(position)
 
     data_names = []
     data_values = []
-    for position in positions.keys():
+    for position in amount_of_workers_on_positions.keys():
         data_names.append(position)
-        data_values.append(positions[position])
+        data_values.append(amount_of_workers_on_positions[position])
     print(data_values)
     print(data_names)
     dpi = 80
@@ -570,9 +566,6 @@ def statistics_1(id):
     mpl.rcParams.update({'font.size': 9})
 
     plt.title('Распределение должностей на строительном объекте (%)')
-
-    xs = range(len(data_names))
-
     plt.pie(
         data_values, autopct='%.1f', radius=1.1,
         explode=[0.15] + [0 for _ in range(len(data_names) - 1)])
@@ -580,7 +573,7 @@ def statistics_1(id):
         bbox_to_anchor=(-0.16, 0.45, 0.25, 0.25),
         loc='lower left', labels=data_names)
     fig.savefig('pie.png')
-    return send_from_directory('D:\Учеба\Питон\pythonProject4', 'pie.png')
+    return send_from_directory(r'D:\Учеба\Питон\Server', 'pie.png')
 
 
 @app.route("/statistics_2/<id>", methods=['GET'])
@@ -595,13 +588,13 @@ def statistics_2(id):
         positions.append(str(row[1]).strip())
         counts.append(0)
     print(position_name_bd)
+
     database_cursor.execute('select* from workers inner join shift on workers.login = shift.login_worker inner join '
                             'construction_object on Construction_object.id = workers.id_construction_object')
-
     for row in database_cursor:
         counts[positions.index(position_name_bd[row[4]])] += 1
-
     print(counts)
+
     database_cursor.execute('select* from company')
     company = ''
     for row in database_cursor:
@@ -613,7 +606,7 @@ def statistics_2(id):
     plt.xlabel("Должность")
     plt.ylabel("Количество")
     plt.savefig('graph.png')
-    return send_from_directory('D:\Учеба\Питон\pythonProject4', 'graph.png')
+    return send_from_directory(r'D:\Учеба\Питон\Server', 'graph.png')
 
 
 @app.route("/sos_signal", methods=['POST'])
@@ -627,23 +620,25 @@ def sos_signal():
             print(row)
             k += 1
         if k == 0:
-            dict = {'answer': 'fail'}
-            return jsonify(dict)
-        database_cursor.execute('select* from sos_signal')
-        k = 0
-        for _ in database_cursor:
-            k += 1
+            return_answer = {'answer': 'fail'}
+            return jsonify(return_answer)
+
+        database_cursor.execute('select max(id) from sos_signal')
+        new_id = 0
+        for row in database_cursor:
+            new_id = int(row[0]) + 1
+
         database_cursor.execute(
             "INSERT INTO sos_signal (login_worker, date, id) VALUES (%s, %s, %s)",
             ((data.get('login')),
              (str(now).split()[0]),
-             (k)))
+             new_id))
         database.commit()
-        dict = {'answer': 'success'}
-        return jsonify(dict)
+        return_answer = {'answer': 'success'}
+        return jsonify(return_answer)
     except:
-        dict = {'answer': 'fail'}
-        return jsonify(dict)
+        return_answer = {'answer': 'fail'}
+        return jsonify(return_answer)
 
 
 @app.route("/sos_signal_android", methods=['GET'])
@@ -657,84 +652,86 @@ def sos_signal_android():
             print(row)
             k += 1
         if k == 0:
-            dict = {'answer': 'fail'}
-            return jsonify(dict)
-        database_cursor.execute('select* from sos_signal')
-        k = 0
-        for _ in database_cursor:
-            k += 1
+            return_answer = {'answer': 'fail'}
+            return jsonify(return_answer)
+
+        database_cursor.execute('select max(id) from sos_signal')
+        new_id = 0
+        for row in database_cursor:
+            new_id = int(row[0]) + 1
+
         database_cursor.execute(
             "INSERT INTO sos_signal (login_worker, date, id) VALUES (%s, %s, %s)",
-            ((dict.get('login')),
+            ((data.get('login')),
              (str(now).split()[0]),
-             (k)))
+             new_id))
         database.commit()
-        dict = {'answer': 'success'}
-        return jsonify(dict)
+        return_answer = {'answer': 'success'}
+        return jsonify(return_answer)
 
     except:
-        dict = {'answer': 'fail'}
-        return jsonify(dict)
+        return_answer = {'answer': 'fail'}
+        return jsonify(return_answer)
 
 
 @app.route("/add_construction_object", methods=['POST'])  # Тут должно быть создание записи в таблице object_coordinates
 def add_construction_object():
     print(request.get_json())
     data = request.get_json()
-    database_cursor.execute("select* from construction_object")
-    k = 0
-    for _ in database_cursor:
-        k += 1
-    print(k)
-    database_cursor.execute("insert into construction_object values(%(id)s, %(id_company)s, %(name)s)", {'id': k,
-                                                                                                         'id_company': data.get(
-                                                                                                             'id'),
-                                                                                                         'name': data.get(
-                                                                                                             'name')})
+    database_cursor.execute("select max(id) from construction_object")
+    new_construction_object_id = 0
+    for row in database_cursor:
+        new_construction_object_id = int(row[0]) + 1
+    print(new_construction_object_id)
+    database_cursor.execute("insert into construction_object values(%(id)s, %(id_company)s, %(name)s)",
+                            {'id': new_construction_object_id,
+                             'id_company': data.get('id'),
+                             'name': data.get('name')})
     database.commit()
-    database_cursor.execute('select* from object_coordinates')
-    f = 0
-    for _ in database_cursor:
-        f += 1
+    database_cursor.execute('select max(id) from object_coordinates')
+    new_object_coordinates_id = 0
+    for row in database_cursor:
+        new_object_coordinates_id = int(row[0]) + 1
     database_cursor.execute(
-        'insert into object_coordinates values(%(k)s, %(coordinates_latitude)s, %(id)s, %(coordinated_longitude)s)', {
-            'k': f,
+        'insert into object_coordinates values(%(object_coordinates_id)s, %(coordinates_latitude)s, '
+        '%(construction_object_id)s, %(coordinated_longitude)s)', {
+            'object_coordinates_id': new_object_coordinates_id,
             'coordinates_latitude': data.get('coordinates_latitude'),
-            'id': k,
+            'construction_object_id': new_construction_object_id,
             'coordinated_longitude': data.get('coordinated_longitude')})
     database.commit()
-    dict = {'answer': 'success'}
-    return jsonify(dict)
+    return_answer = {'answer': 'success'}
+    return jsonify(return_answer)
 
 
 @app.route("/add_construction_object_android",
            methods=['GET'])  # Тут должно быть создание записи в таблице object_coordinates
 def add_construction_object_android():
     data = request.args
-    database_cursor.execute("select* from construction_object")
-    k = 0
-    for _ in database_cursor:
-        k += 1
-    print(k)
-    database_cursor.execute("insert into construction_object values(%(id)s, %(id_company)s, %(name)s)", {'id': k,
-                                                                                                         'id_company': data.get(
-                                                                                                             'id'),
-                                                                                                         'name': data.get(
-                                                                                                             'name')})
+    database_cursor.execute("select max(id) from construction_object")
+    new_construction_object_id = 0
+    for row in database_cursor:
+        new_construction_object_id = int(row[0]) + 1
+    print(new_construction_object_id)
+    database_cursor.execute("insert into construction_object values(%(id)s, %(id_company)s, %(name)s)",
+                            {'id': new_construction_object_id,
+                             'id_company': data.get('id'),
+                             'name': data.get('name')})
     database.commit()
-    database_cursor.execute('select* from object_coordinates')
-    k = 0
-    for _ in database_cursor:
-        k += 1
+    database_cursor.execute('select max(id) from object_coordinates')
+    new_object_coordinates_id = 0
+    for row in database_cursor:
+        new_object_coordinates_id = int(row[0]) + 1
     database_cursor.execute(
-        'insert into object_coordinates values(%(k)s, %(coordinates_latitude)s, %(id)s, %(coordinated_longitude)s)', {
-            'k': k,
+        'insert into object_coordinates values(%(object_coordinates_id)s, %(coordinates_latitude)s, '
+        '%(construction_object_id)s, %(coordinated_longitude)s)', {
+            'object_coordinates_id': new_object_coordinates_id,
             'coordinates_latitude': data.get('coordinates_latitude'),
-            'id': data.get('id'),
+            'construction_object_id': new_construction_object_id,
             'coordinated_longitude': data.get('coordinated_longitude')})
     database.commit()
-    dict = {'answer': 'success'}
-    return jsonify(dict)  # @app.route("/<username>", methods=['GET'])
+    return_answer = {'answer': 'success'}
+    return jsonify(return_answer)
 
 
 if __name__ == "__main__":
