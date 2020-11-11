@@ -4,10 +4,10 @@ import datetime
 
 database = psycopg2.connect(database='Server', user='postgres', password=' ', host='127.0.0.1', port=5432)
 database_cursor = database.cursor()
+all = 'status'
 
-database_cursor.execute("select coordinates_latitude from workers_coordinates where id_shift=2")
-print(database_cursor)
-
+data = {'login': 'nya', 'password': 'qwerty'}
+database_cursor.execute(f"select name, surname, lastname from workers "
+                        f"where login = '{data['login']}' and password = 'qwerty'")
 for row in database_cursor:
-    i = 0 if row[0] is None else len(row[0])
-print(i)
+    print(row)

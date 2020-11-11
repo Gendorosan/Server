@@ -10,9 +10,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d8e9eec-9017-44b4-b3d9-91320cdd5ba0" name="Default Changelist" comment="shift_stop&#10;shift_stop_android&#10;drop_down_list&#10;add_coordinates&#10;add_coordinates_android&#10;add_coordinates_arduino&#10;company_registration&#10;company_registration_android">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_11_2020__5_51_PM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_11_2020__5_51_PM__Default_Changelist_.xml" afterDir="false" />
+    <list default="true" id="7d8e9eec-9017-44b4-b3d9-91320cdd5ba0" name="Default Changelist" comment="add methods: registration, registration_android, authentication, authentication_android, company_authentication, company_authentication_android, statistics_1, statistics_2, sos_signal, sos_signal_android, add_construction_object, add_construction_object_android">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test_file.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,10 +42,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../pythonProject4" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.Test_file">
+  <component name="RunManager" selected="Python.Server">
     <configuration name="Server" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Server" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -90,8 +90,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Test_file" />
         <item itemvalue="Python.Server" />
+        <item itemvalue="Python.Test_file" />
       </list>
     </recent_temporary>
   </component>
@@ -139,7 +139,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605025946928</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="add methods: registration, registration_android, authentication, authentication_android, company_authentication, company_authentication_android, statistics_1, statistics_2, sos_signal, sos_signal_android, add_construction_object, add_construction_object_android">
+      <created>1605039871513</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1605039871513</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -159,29 +166,31 @@
     <MESSAGE value="find_worker_surname_android&#10;all_workers_on_construction_object_without_status&#10;all_workers_on_construction_object&#10;shift_start&#10;shift_start_android" />
     <MESSAGE value="add methods:&#10;shift_stop&#10;shift_stop_android&#10;drop_down_list&#10;add_coordinates&#10;add_coordinates_android&#10;add_coordinates_arduino&#10;company_registration&#10;company_registration_android" />
     <MESSAGE value="shift_stop&#10;shift_stop_android&#10;drop_down_list&#10;add_coordinates&#10;add_coordinates_android&#10;add_coordinates_arduino&#10;company_registration&#10;company_registration_android" />
-    <option name="LAST_COMMIT_MESSAGE" value="shift_stop&#10;shift_stop_android&#10;drop_down_list&#10;add_coordinates&#10;add_coordinates_android&#10;add_coordinates_arduino&#10;company_registration&#10;company_registration_android" />
+    <MESSAGE value="add methods: registration, registration_android, authentication, authentication_android, company_authentication, company_authentication_android, statistics_1, statistics_2, sos_signal, sos_signal_android, add_construction_object, add_construction_object_android" />
+    <option name="LAST_COMMIT_MESSAGE" value="add methods: registration, registration_android, authentication, authentication_android, company_authentication, company_authentication_android, statistics_1, statistics_2, sos_signal, sos_signal_android, add_construction_object, add_construction_object_android" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="627" y="286" key="FileChooserDialogImpl" timestamp="1604930880684">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state x="717" y="283" key="FileChooserDialogImpl" timestamp="1605122679510">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="627" y="286" key="FileChooserDialogImpl/0.0.1680.1050@0.0.1680.1050" timestamp="1604930880684" />
-    <state width="1899" height="357" key="GridCell.Tab.0.bottom" timestamp="1605036852423">
+    <state x="717" y="283" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605122679510" />
+    <state width="1899" height="237" key="GridCell.Tab.0.bottom" timestamp="1605125890315">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="357" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605036852423" />
-    <state width="1899" height="357" key="GridCell.Tab.0.center" timestamp="1605036852423">
+    <state width="1899" height="237" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605125890315" />
+    <state width="1899" height="237" key="GridCell.Tab.0.center" timestamp="1605125890314">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="357" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605036852423" />
-    <state width="1899" height="357" key="GridCell.Tab.0.left" timestamp="1605036852423">
+    <state width="1899" height="237" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605125890314" />
+    <state width="1899" height="237" key="GridCell.Tab.0.left" timestamp="1605125890314">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="357" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605036852423" />
-    <state width="1899" height="357" key="GridCell.Tab.0.right" timestamp="1605036852423">
+    <state width="1899" height="237" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605125890314" />
+    <state width="1899" height="237" key="GridCell.Tab.0.right" timestamp="1605125890314">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="357" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605036852423" />
+    <state width="1899" height="237" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605125890314" />
     <state x="184" y="86" key="MergeDialog" timestamp="1605039104910">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -190,13 +199,17 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="341" y="164" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1604930980405" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605025954237">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605039875834">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1605025954237" />
-    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605039090323">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1605039875834" />
+    <state x="566" y="130" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1605095719546">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1605039090323" />
+    <state x="566" y="130" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1605095719546" />
+    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605078250373">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1605078250373" />
   </component>
 </project>
