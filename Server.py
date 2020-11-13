@@ -342,7 +342,7 @@ def company_registration_android():
         database.commit()
         return_answer = {'answer': 'success'}
         return jsonify(return_answer)
-    except SyntaxError :
+    except SyntaxError:
         return_answer = {'answer': 'fail'}
         return jsonify(return_answer)
 
@@ -389,7 +389,7 @@ def registration_android():
         database.commit()
         return_answer = {'answer': 'success'}
         return jsonify(return_answer)
-    except SyntaxError :
+    except SyntaxError:
         return_answer = {'answer': 'fail'}
         return jsonify(return_answer)
 
@@ -523,8 +523,8 @@ def statistics_1(construction_object_id):
     return send_from_directory(r'D:\Учеба\Питон\Server', 'pie.png')
 
 
-@app.route('/statistics_2/<id>', methods=['GET'])
-def statistics_2(id):
+@app.route('/statistics_2/<company_id>', methods=['GET'])
+def statistics_2(company_id):
     plt.clf()
     positions = []
     database_cursor.execute('select* from position')
@@ -546,7 +546,7 @@ def statistics_2(id):
     company = ''
     for row in database_cursor:
         print(row)
-        if row[0] == id:
+        if row[0] == company_id:
             company = str(row[1]).strip()
     plt.bar(positions, counts)
     plt.title(f'Количество рабочих смен компании \'{company}\'')
