@@ -1,8 +1,5 @@
 from flask import Flask, jsonify, request
-import json
-from types import SimpleNamespace
 from flask import send_from_directory
-from collections import namedtuple
 import psycopg2
 import datetime
 import matplotlib as mpl

@@ -10,7 +10,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d8e9eec-9017-44b4-b3d9-91320cdd5ba0" name="Default Changelist" comment="edited and tested all the methods">
+    <list default="true" id="7d8e9eec-9017-44b4-b3d9-91320cdd5ba0" name="Default Changelist" comment="final commit">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_11_2020__5_51_PM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_11_2020__5_51_PM__Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server.py" afterDir="false" />
     </list>
@@ -207,10 +208,10 @@
     </state>
     <state x="341" y="164" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1604930980405" />
     <state x="390" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1605262557288" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605126013609">
+    <state x="427" y="163" key="Vcs.Push.Dialog.v2" timestamp="1605269140085">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1605126013609" />
+    <state x="427" y="163" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1605269140085" />
     <state x="566" y="130" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1605095719546">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
