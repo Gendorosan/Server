@@ -60,6 +60,7 @@ def location():
     return_answer = {}
     shift_id = ''
     data = request.get_json()
+    print(request.get_json())
     database_cursor.execute(
         'select* from workers inner join object_coordinates on object_coordinates.id_construction_object = '
         'workers.id_construction_object inner join shift on shift.login_worker = workers.login')
@@ -152,9 +153,9 @@ def shift_start():
     database_cursor.execute('select max(id) from workers_coordinates')
     new_workers_coordinates_id = 0
     for row in database_cursor:
-        new_workers_coordinates_id = int(row[0]) + 1
+        new_workers_coordinates_id = 0 if row[0] is None else int(row[0]) + 1
     print(new_workers_coordinates_id)
-    database_cursor.execute(f"insert into workers_coordinates values('{new_workers_coordinates_id}', '{None}',"
+    database_cursor.execute(f"insert into workers_coordinates values('{new_workers_coordinates_id}', Null,"
                             f" '{new_shift_id}')")
     database.commit()
     return_answer = {'answer': 'success'}
@@ -170,18 +171,16 @@ def shift_start_android():
     for row in database_cursor:
         new_shift_id = int(row[0]) + 1
     print(new_shift_id)
+    database_cursor.execute(f"insert into shift values('{new_shift_id}', 'в процессе', '{data['login']}', '{now}')")
 
-    database_cursor.execute(f"insert into shift values('{new_shift_id}', 'в процессе', '{data['login']}', {now})")
     database.commit()
-
     database_cursor.execute('select max(id) from workers_coordinates')
     new_workers_coordinates_id = 0
     for row in database_cursor:
-        new_workers_coordinates_id = int(row[0]) + 1
+        new_workers_coordinates_id = 0 if row[0] is None else int(row[0]) + 1
     print(new_workers_coordinates_id)
-
-    database_cursor.execute("insert into workers_coordinates values("
-                            f"'{new_workers_coordinates_id}', '{None}', '{new_shift_id}'")
+    database_cursor.execute(f"insert into workers_coordinates values('{new_workers_coordinates_id}', Null,"
+                            f" '{new_shift_id}')")
     database.commit()
     return_answer = {'answer': 'success'}
     return jsonify(return_answer)
@@ -316,7 +315,7 @@ def company_registration():
         database_cursor.execute("select max(id) from company")
         company_id = 0
         for row in database_cursor:
-            company_id = int(row[0]) + 1
+            company_id = 0 if row[0] is None else int(row[0]) + 1
         print(company_id)
         database_cursor.execute(
             "insert into company values("
@@ -325,7 +324,7 @@ def company_registration():
         database.commit()
         return_answer = {'answer': 'success'}
         return jsonify(return_answer)
-    except:
+    except SyntaxError:
         return_answer = {'answer': 'fail'}
         return jsonify(return_answer)
 
@@ -337,7 +336,7 @@ def company_registration_android():
         database_cursor.execute("select max(id) from company")
         company_id = 0
         for row in database_cursor:
-            company_id = int(row[0]) + 1
+            company_id = 0 if row[0] is None else int(row[0]) + 1
         print(company_id)
         database_cursor.execute(
             "insert into company values("
@@ -346,27 +345,35 @@ def company_registration_android():
         database.commit()
         return_answer = {'answer': 'success'}
         return jsonify(return_answer)
-    except:
+    except SyntaxError :
         return_answer = {'answer': 'fail'}
         return jsonify(return_answer)
 
 
 @app.route('/registration', methods=['POST'])
 def registration():
-    print(request.get_json())
-    data = request.get_json()
-    database_cursor.execute(f"select id from position where name = '{data['position']}'")
-    position_id = 0
-    for row in database_cursor:
-        position_id = row[0]
-
-    database_cursor.execute(
-        "INSERT INTO workers (login, name, surname, lastname, password, phone_number, id_position, device_number) "
-        f"VALUES ('{data['login']}', '{data['name']}', '{data['surname']}', '{data['lastname']}', "
-        f"'{data['password']}', '{data['phone_number']}', '{position_id}', '{data['device_number']}')")
-    database.commit()
-    return_answer = {'answer': 'success'}
-    return jsonify(return_answer)
+    try:
+        print(request.get_json())
+        data = request.get_json()
+        database_cursor.execute(f"select id from position where name = '{data['position']}'")
+        position_id = 0
+        for row in database_cursor:
+            position_id = row[0]
+        database_cursor.execute(f"select id from Construction_object where name = '{data['construction_object']}'")
+        construction_object_id = 0
+        for row in database_cursor:
+            construction_object_id = row[0]
+        database_cursor.execute(
+            "INSERT INTO workers (login, name, surname, lastname, password, phone_number, id_position, "
+            "id_construction_object) "
+            f"VALUES ('{data['login']}', '{data['name']}', '{data['surname']}', '{data['lastname']}', "
+            f"'{data['password']}', '{data['phone_number']}', '{position_id}', '{construction_object_id}')")
+        database.commit()
+        return_answer = {'answer': 'success'}
+        return jsonify(return_answer)
+    except SyntaxError:
+        return_answer = {'answer': 'fail'}
+        return jsonify(return_answer)
 
 
 @app.route('/registration_android', methods=['GET'])
@@ -385,7 +392,7 @@ def registration_android():
         database.commit()
         return_answer = {'answer': 'success'}
         return jsonify(return_answer)
-    except:
+    except SyntaxError :
         return_answer = {'answer': 'fail'}
         return jsonify(return_answer)
 
@@ -412,7 +419,7 @@ def authentication():
                          'lastname': str(user_info[0][2]).strip(),
                          'status': str(status[-1][0]).strip() if len(status) > 0 else 'окончена'}
         return jsonify(return_answer)
-    except:
+    except IndexError:
         return_answer = {'answer': 'fail'}
         return jsonify(return_answer)
 
@@ -438,7 +445,7 @@ def authentication_android():
                          'lastname': str(user_info[0][2]).strip(),
                          'status': str(status[-1][0]).strip() if len(status) > 0 else 'окончена'}
         return jsonify(return_answer)
-    except:
+    except IndexError:
         return_answer = {'answer': 'fail'}
         return jsonify(return_answer)
 
@@ -455,7 +462,7 @@ def company_authentication():
             company_name.append(row)
         return_answer = {'answer': 'success', 'name': str(company_name[0][0]).strip()}
         return jsonify(return_answer)
-    except:
+    except IndexError:
         return_answer = {'answer': 'fail'}
         return jsonify(return_answer)
 
@@ -471,7 +478,7 @@ def company_authentication_android():
             company_name.append(row)
         return_answer = {'answer': 'success', 'name': str(company_name[0][0]).strip()}
         return jsonify(return_answer)
-    except:
+    except IndexError:
         return_answer = {'answer': 'fail'}
         return jsonify(return_answer)
 
@@ -554,60 +561,50 @@ def statistics_2(id):
 
 @app.route('/sos_signal', methods=['POST'])
 def sos_signal():
-    try:
-        now = str(datetime.datetime.now()).split()[0]
-        data = request.get_json()
-        database_cursor.execute(f"select* from workers where login = '{data['login']}'")
-        k = 0
-        for row in database_cursor:
-            print(row)
-            k += 1
-        if k == 0:
-            return_answer = {'answer': 'fail'}
-            return jsonify(return_answer)
-
-        database_cursor.execute("select max(id) from sos_signal")
-        new_id = 0
-        for row in database_cursor:
-            new_id = int(row[0]) + 1
-
-        database_cursor.execute(
-            f"INSERT INTO sos_signal (login_worker, date, id) VALUES ('{data['login']}', '{now}', '{new_id}')")
-        database.commit()
-        return_answer = {'answer': 'success'}
-        return jsonify(return_answer)
-    except:
+    now = str(datetime.datetime.now()).split()[0]
+    data = request.get_json()
+    database_cursor.execute(f"select* from workers where login = '{data['login']}'")
+    k = 0
+    for row in database_cursor:
+        print(row)
+        k += 1
+    if k == 0:
         return_answer = {'answer': 'fail'}
         return jsonify(return_answer)
+
+    database_cursor.execute("select max(id) from sos_signal")
+    new_id = 0
+    for row in database_cursor:
+        new_id = 0 if row[0] is None else int(row[0]) + 1
+    database_cursor.execute(
+        f"INSERT INTO sos_signal (login_worker, date, id) VALUES ('{data['login']}', '{now}', '{new_id}')")
+    database.commit()
+    return_answer = {'answer': 'success'}
+    return jsonify(return_answer)
 
 
 @app.route('/sos_signal_android', methods=['GET'])
 def sos_signal_android():
-    try:
-        now = str(datetime.datetime.now()).split()[0]
-        data = request.args
-        database_cursor.execute(f"select* from workers where login = '{data['login']}'")
-        k = 0
-        for row in database_cursor:
-            print(row)
-            k += 1
-        if k == 0:
-            return_answer = {'answer': 'fail'}
-            return jsonify(return_answer)
-
-        database_cursor.execute("select max(id) from sos_signal")
-        new_id = 0
-        for row in database_cursor:
-            new_id = int(row[0]) + 1
-
-        database_cursor.execute(
-            f"INSERT INTO sos_signal (login_worker, date, id) VALUES ('{data['login']}', '{now}', '{new_id}')")
-        database.commit()
-        return_answer = {'answer': 'success'}
-        return jsonify(return_answer)
-    except:
+    now = str(datetime.datetime.now()).split()[0]
+    data = request.args
+    database_cursor.execute(f"select* from workers where login = '{data['login']}'")
+    k = 0
+    for row in database_cursor:
+        print(row)
+        k += 1
+    if k == 0:
         return_answer = {'answer': 'fail'}
         return jsonify(return_answer)
+
+    database_cursor.execute("select max(id) from sos_signal")
+    new_id = 0
+    for row in database_cursor:
+        new_id = 0 if row[0] is None else int(row[0]) + 1
+    database_cursor.execute(
+        f"INSERT INTO sos_signal (login_worker, date, id) VALUES ('{data['login']}', '{now}', '{new_id}')")
+    database.commit()
+    return_answer = {'answer': 'success'}
+    return jsonify(return_answer)
 
 
 @app.route('/add_construction_object', methods=['POST'])
@@ -620,15 +617,16 @@ def add_construction_object():
         new_construction_object_id = int(row[0]) + 1
     print(new_construction_object_id)
     database_cursor.execute("insert into construction_object "
-                            f"values('{new_construction_object_id}', '{data['id']}, '{data['name']}')")
+                            f"values('{new_construction_object_id}', '{data['id']}', '{data['name']}')")
     database.commit()
     database_cursor.execute("select max(id) from object_coordinates")
     new_object_coordinates_id = 0
     for row in database_cursor:
-        new_object_coordinates_id = int(row[0]) + 1
+        print(row[0])
+        new_object_coordinates_id = 0 if row[0] is None else int(row[0]) + 1
     database_cursor.execute(
-        f"insert into object_coordinates values('{new_object_coordinates_id}', '{data['coordinates_latitude']}', "
-        f"'{new_construction_object_id}', '{data['coordinated_longitude']}')")
+        f"insert into object_coordinates values('{new_object_coordinates_id}', array{data['coordinates_latitude']}, "
+        f"'{new_construction_object_id}', array{data['coordinated_longitude']})")
     database.commit()
     return_answer = {'answer': 'success'}
     return jsonify(return_answer)
@@ -644,15 +642,16 @@ def add_construction_object_android():
         new_construction_object_id = int(row[0]) + 1
     print(new_construction_object_id)
     database_cursor.execute("insert into construction_object "
-                            f"values('{new_construction_object_id}', '{data['id']}, '{data['name']}')")
+                            f"values('{new_construction_object_id}', '{data['id']}', '{data['name']}')")
     database.commit()
     database_cursor.execute("select max(id) from object_coordinates")
     new_object_coordinates_id = 0
     for row in database_cursor:
-        new_object_coordinates_id = int(row[0]) + 1
+        print(row[0])
+        new_object_coordinates_id = 0 if row[0] is None else int(row[0]) + 1
     database_cursor.execute(
-        f"insert into object_coordinates values('{new_object_coordinates_id}', '{data['coordinates_latitude']}', "
-        f"'{new_construction_object_id}', '{data['coordinated_longitude']}')")
+        f"insert into object_coordinates values('{new_object_coordinates_id}', array{data['coordinates_latitude']}, "
+        f"'{new_construction_object_id}', array{data['coordinated_longitude']})")
     database.commit()
     return_answer = {'answer': 'success'}
     return jsonify(return_answer)

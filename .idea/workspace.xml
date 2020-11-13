@@ -10,10 +10,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d8e9eec-9017-44b4-b3d9-91320cdd5ba0" name="Default Changelist" comment="add methods: registration, registration_android, authentication, authentication_android, company_authentication, company_authentication_android, statistics_1, statistics_2, sos_signal, sos_signal_android, add_construction_object, add_construction_object_android">
+    <list default="true" id="7d8e9eec-9017-44b4-b3d9-91320cdd5ba0" name="Default Changelist" comment="edited and tested all the methods">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server.py" beforeDir="false" afterPath="$PROJECT_DIR$/Server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test_file.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +42,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../pythonProject4" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.language" />
   </component>
   <component name="RunManager" selected="Python.Server">
     <configuration name="Server" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -146,7 +145,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605039871513</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="edited and tested all the methods">
+      <created>1605126000464</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1605126000464</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -167,42 +173,44 @@
     <MESSAGE value="add methods:&#10;shift_stop&#10;shift_stop_android&#10;drop_down_list&#10;add_coordinates&#10;add_coordinates_android&#10;add_coordinates_arduino&#10;company_registration&#10;company_registration_android" />
     <MESSAGE value="shift_stop&#10;shift_stop_android&#10;drop_down_list&#10;add_coordinates&#10;add_coordinates_android&#10;add_coordinates_arduino&#10;company_registration&#10;company_registration_android" />
     <MESSAGE value="add methods: registration, registration_android, authentication, authentication_android, company_authentication, company_authentication_android, statistics_1, statistics_2, sos_signal, sos_signal_android, add_construction_object, add_construction_object_android" />
-    <option name="LAST_COMMIT_MESSAGE" value="add methods: registration, registration_android, authentication, authentication_android, company_authentication, company_authentication_android, statistics_1, statistics_2, sos_signal, sos_signal_android, add_construction_object, add_construction_object_android" />
+    <MESSAGE value="edited and tested all the methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="edited and tested all the methods" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="717" y="283" key="FileChooserDialogImpl" timestamp="1605122679510">
+    <state x="717" y="283" key="FileChooserDialogImpl" timestamp="1605259535679">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="627" y="286" key="FileChooserDialogImpl/0.0.1680.1050@0.0.1680.1050" timestamp="1604930880684" />
-    <state x="717" y="283" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605122679510" />
-    <state width="1899" height="237" key="GridCell.Tab.0.bottom" timestamp="1605125890315">
+    <state x="717" y="283" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605259535679" />
+    <state width="1899" height="2" key="GridCell.Tab.0.bottom" timestamp="1605262662691">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="237" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605125890315" />
-    <state width="1899" height="237" key="GridCell.Tab.0.center" timestamp="1605125890314">
+    <state width="1899" height="2" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605262662691" />
+    <state width="1899" height="2" key="GridCell.Tab.0.center" timestamp="1605262662691">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="237" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605125890314" />
-    <state width="1899" height="237" key="GridCell.Tab.0.left" timestamp="1605125890314">
+    <state width="1899" height="2" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605262662691" />
+    <state width="1899" height="2" key="GridCell.Tab.0.left" timestamp="1605262662691">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="237" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605125890314" />
-    <state width="1899" height="237" key="GridCell.Tab.0.right" timestamp="1605125890314">
+    <state width="1899" height="2" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605262662691" />
+    <state width="1899" height="2" key="GridCell.Tab.0.right" timestamp="1605262662691">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="237" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605125890314" />
+    <state width="1899" height="2" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605262662691" />
     <state x="184" y="86" key="MergeDialog" timestamp="1605039104910">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="184" y="86" key="MergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605039104910" />
-    <state x="341" y="164" key="SettingsEditor" timestamp="1604930980405">
-      <screen x="0" y="0" width="1680" height="1050" />
-    </state>
-    <state x="341" y="164" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1604930980405" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605039875834">
+    <state x="390" y="162" key="SettingsEditor" timestamp="1605262557288">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1605039875834" />
+    <state x="341" y="164" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1604930980405" />
+    <state x="390" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1605262557288" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605126013609">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1605126013609" />
     <state x="566" y="130" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1605095719546">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
